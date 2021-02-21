@@ -10,7 +10,7 @@ namespace WebApp.UnitTests
     public class WeatherForecastControllerUnitTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void WhenGetMethodIsCalledThenWeatherResultsAreSent()
         {
            //Arrange
            var loggerMock = new Mock<ILogger<WeatherForecastController>>();
