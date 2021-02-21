@@ -1,5 +1,3 @@
-using System.Net.Http;
-using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
@@ -14,7 +12,7 @@ namespace WebApp.IntegrationTests
         {
             //Arrange
             
-            var fixture = new WebApplicationFactory<WebApp.Startup>();
+            var fixture = new WebApplicationFactory<Startup>();
 
             var client = fixture.CreateClient();
 

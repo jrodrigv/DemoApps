@@ -12,15 +12,15 @@ namespace WebApp.UnitTests
         [TestMethod]
         public void WhenGetMethodIsCalledThenWeatherResultsAreSent()
         {
-           //Arrange
+           // Arrange
            var loggerMock = new Mock<ILogger<WeatherForecastController>>();
            var weatherForecastController = new WeatherForecastController(loggerMock.Object);
 
 
-            //act
+            // Act
             var result = weatherForecastController.Get();
 
-            //Assert
+            // Assert
             Assert.IsTrue(result.Count() == 5);
         }
     }
