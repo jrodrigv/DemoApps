@@ -1,4 +1,4 @@
-# Demo Docker Stackas
+# Demo Docker Stacks
 
 ## Prerequisitos
 
