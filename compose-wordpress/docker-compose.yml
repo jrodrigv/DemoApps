@@ -1,23 +1,46 @@
 version: "3.9"
-    
+ 
+# servicios/contenedores que se crearán como parte de docker-compose    
 services:
   db:
+    # imagen de docker que usará el servicio
     image: mysql:5.7
+    # crearemos un volumen llamado db_data que se montará en /var/lib/mysql
     volumes:
       - db_data:/var/lib/mysql
+    # también podríamos crear un bind mount usando un directorio en nuestro host
+    # - ./db_data:/var/lib/mysql
+   
+    # reiniciará el contenedor del servicio automáticamente ante cualquier situación especial como un error.
     restart: always
+   
+    # variables de entorno que estarán disponible cuando se cree el servicio
     environment:
       MYSQL_ROOT_PASSWORD: somewordpress
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
-    
+   
+    # Nos permite configurar un chequeo de salud del contenedor.
+    # Para información concreta sobre cada uno de los campos: https://docs.docker.com/engine/reference/builder/#healthcheck
+    healthcheck:
+          test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+          interval: 5s
+          timeout: 20s
+          retries: 10
+          start_period: 20s
+    # Definimos que queremos conectar este servicio a la red backend
+    networks:
+      - backend
   wordpress:
+    # Definimos una dependencia con el servicio db, hasta que el servicio db no se haya creado exitosamente,
+    # no comenzará la creación de este.
     depends_on:
       - db
     image: wordpress:latest
     volumes:
       - wordpress_data:/var/www/html
+    # Este servicio expone el puerto 8000 y lo mapea al puerto 80 en el contenedor.
     ports:
       - "8000:80"
     restart: always
@@ -26,6 +49,15 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
+    networks:
+      - backend
+# Definimos los volúmenes de Docker que queremos crear.
+# Si fueran bind mounts no sería necesario definirlos.
 volumes:
   db_data: {}
   wordpress_data: {}
+ 
+# Definimos la red backend a la que estarán conectados los servicios.
+networks:
+  backend:
+ 
