@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  host:
+    image: webapp:earthly
+    hostname: sut
+    cpu_count: 1
+    networks:
+      backend:
+        ipv4_address: 10.10.0.2
+ 
+  test:
+    hostname: test
+    cpu_count: 1
+    image: mcr.microsoft.com/dotnet/sdk:6.0
+    networks:
+      backend:
+        ipv4_address: 10.10.0.3
+    entrypoint: ["/bin/bash","-cv"]
+    command:
+    - dotnet test /home/WebApp.E2ETests.dll --logger "trx" --results-directory /home/testresults
+    volumes:
+    - ./:/home
+    depends_on:
+        - host
+networks:
+  backend:
+    ipam:
+      driver: default
+      config:
+        - subnet: "10.10.0.0/24"

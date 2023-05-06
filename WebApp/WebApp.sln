@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30717.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{32DAAF4C-E5F6-40D4-A522-5CD3C99A5AFA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp.UnitTests", "WebApp.UnitTests\WebApp.UnitTests.csproj", "{343C45D1-75C8-4AC1-BDEF-7F55F4DA70E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.IntegrationTests", "WebApp.IntegrationTests\WebApp.IntegrationTests.csproj", "{8EF8568B-7B8E-43D7-8BF9-94188A5D5066}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp.IntegrationTests", "WebApp.IntegrationTests\WebApp.IntegrationTests.csproj", "{8EF8568B-7B8E-43D7-8BF9-94188A5D5066}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp.E2ETests", "WebApp.E2ETests\WebApp.E2ETests.csproj", "{B0A252EB-88D3-4D01-8DDD-6B9BE92251B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{8EF8568B-7B8E-43D7-8BF9-94188A5D5066}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EF8568B-7B8E-43D7-8BF9-94188A5D5066}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EF8568B-7B8E-43D7-8BF9-94188A5D5066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0A252EB-88D3-4D01-8DDD-6B9BE92251B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0A252EB-88D3-4D01-8DDD-6B9BE92251B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0A252EB-88D3-4D01-8DDD-6B9BE92251B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0A252EB-88D3-4D01-8DDD-6B9BE92251B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
